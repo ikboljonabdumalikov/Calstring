@@ -9,14 +9,14 @@ int i = 0;
 
 while (i < input.Length)
 {
-    char c = input[i];
+    char character = input[i];
 
-    if (c >= '0' && c <= '9')
+    if (character >= '0' && character <= '9')
     {
-        currentNumber = currentNumber * 10 + (c - '0');
+        currentNumber = currentNumber * 10 + (character - '0');
     }
 
-    if (c == '+' || c == '-' || i == input.Length - 1)
+    if (character == '+' || character == '-' || i == input.Length - 1)
     {
         if (lastOp == '+')
         {
@@ -27,8 +27,9 @@ while (i < input.Length)
             result -= currentNumber;
         }
 
-        lastOp = c;
+        lastOp = character;
         currentNumber = 0;
     }
     i++;
 }
+Console.WriteLine(result);
