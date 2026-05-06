@@ -10,7 +10,10 @@ int i = 0;
 while (i < input.Length)
 {
     char c = input[i];
-    
-    
+
+    if (c >= '0' && c <= '9')
+    {
+        currentNumber = currentNumber * 10 + (c - '0');
+    }
     i++;
 }
