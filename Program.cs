@@ -15,5 +15,20 @@ while (i < input.Length)
     {
         currentNumber = currentNumber * 10 + (c - '0');
     }
+
+    if (c == '+' || c == '-' || i == input.Length - 1)
+    {
+        if (lastOp == '+')
+        {
+            result += currentNumber;
+        }
+        else if (lastOp == '-')
+        {
+            result -= currentNumber;
+        }
+
+        lastOp = c;
+        currentNumber = 0;
+    }
     i++;
 }
