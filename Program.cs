@@ -1,13 +1,20 @@
 ﻿
-Console.WriteLine("Ifodani kiriting (masalan, 1+3-1+5+8):");
+Console.WriteLine("Ifodani kiriting (masalan, 12+34-5+100):");
 string input = Console.ReadLine();
+
+if (input == null || input == "")
+{
+    Console.WriteLine("Iltimos, ifodani kiriting.");
+    return;
+}
+
+input = input.Replace(" ", ""); // Agar foydalanuvchi bo'sh joy kiritgan bo'lsa olib tashlaymiz.
 
 int result = 0;
 int currentNumber = 0;
 char lastOp = '+';
-int i = 0;
 
-while (i < input.Length)
+for (int i = 0; i < input.Length; i++)
 {
     char character = input[i];
 
@@ -20,16 +27,16 @@ while (i < input.Length)
     {
         if (lastOp == '+')
         {
-            result += currentNumber;
+            result = result + currentNumber;
         }
-        else if (lastOp == '-')
+        else
         {
-            result -= currentNumber;
+            result = result - currentNumber;
         }
 
         lastOp = character;
         currentNumber = 0;
     }
-    i++;
 }
-Console.WriteLine(result);
+
+Console.WriteLine("Natija: " + result);
