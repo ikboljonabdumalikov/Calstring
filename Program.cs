@@ -4,14 +4,27 @@ string answer = "yes"; // Boshlanishida "yes" deb belgilaymiz
 // Dastur faqat foydalanuvchi "no" deb yozmaguncha ishlaydi
 while (answer != "no")
 {
-    Console.WriteLine("\nIfodani kiriting (masalan, 10+5-2):");
-    string input = Console.ReadLine().Replace(" ", "");
+    string input = ReadInput();
+    int result = AddNumbers(input);
+    Console.WriteLine("Natija: " + result);
+    answer = ReadAnswer();
+}
 
+Console.WriteLine("Dastur tugadi. Sog' bo'ling!");
+
+static string ReadInput()
+{
+    Console.WriteLine("\nIfodani kiriting (masalan, 10+5-2):");
+    string inputLine = Console.ReadLine();
+    return (inputLine == null ? "" : inputLine.Replace(" ", ""));
+}
+
+static int AddNumbers(string input)
+{
     int result = 0;
     int currentNumber = 0;
     char lastOp = '+';
 
-    // Hisoblash qismi
     for (int i = 0; i < input.Length; i++)
     {
         char character = input[i];
@@ -31,11 +44,12 @@ while (answer != "no")
         }
     }
 
-    Console.WriteLine("Natija: " + result);
-
-    // Siklni to'xtatish yoki davom ettirishni so'raymiz
-    Console.Write("Yana davom etamizmi? (yes/no): ");
-    answer = Console.ReadLine().ToLower();
+    return result;
 }
 
-Console.WriteLine("Dastur tugadi. Sog' bo'ling!");
+static string ReadAnswer()
+{
+    Console.Write("Yana davom etamizmi? (yes/no): ");
+    string answerLine = Console.ReadLine();
+    return (answerLine == null ? "no" : answerLine.ToLower());
+}
